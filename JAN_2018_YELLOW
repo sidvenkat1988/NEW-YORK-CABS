@@ -1,0 +1,6 @@
+##Import yellow data of jan 2018 into mongo
+mongoimport -d NEW_YORK_CABS -c JAN_2018_YELLOW --type csv --file /Users/sidv88/Downloads/yellow_tripdata_2018-01.csv --headerline
+##count the number of documents
+db.JAN_2018_YELLOW.count()
+#perform a sanity check on the last record
+db.JAN_2018_YELLOW.find({$and:[{"tpep_pickup_datetime" : "2018-01-05 18:09:27"},{"tpep_dropoff_datetime" : "2018-01-05 18:23:54"}]}).pretty
