@@ -1,0 +1,8 @@
+##Import green data of jan2018 into mongo
+mongoimport -d NEW_YORK_CABS -c JAN_2018_GREEN --type csv --file /Users/sidv88/Downloads/green_tripdata_2018-01.csv --headerline
+##count the number of documents
+db.JAN_2018_GREEN.count()
+##performed a sanity check on the first data
+db.JAN_2018_GREEN.find({$and:[{"lpep_pickup_datetime" : "2018-01-01 00:18:50"},{"lpep_dropoff_datetime" : "2018-01-01 00:24:39"}]}).pretty()
+##performed a sanity check on the last data
+db.JAN_2018_GREEN.find({$and:[{"lpep_pickup_datetime" : "2018-01-31 23:30:45"},{"lpep_dropoff_datetime" : "2018-01-31 23:37:10"}]}).pretty()
